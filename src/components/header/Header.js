@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import "./Header.css";
 import { Switch } from "@mui/material";
+import React from "react";
+import { useThemeContext } from "../context/ThemeContext";
+import "./Header.css";
 
 export const Header = () => {
-  const theme = localStorage.getItem("theme");
+  const { theme, toggleTheme } = useThemeContext();
 
-  const [checked, setChecked] = useState(theme === "dark" ? true : false);
-
-  const handleChange = (e) => {
-    setChecked(e.target.checked);
-    localStorage.setItem("theme", e.target.checked ? "dark" : "light");
+  const handleChange = () => {
+    toggleTheme();
   };
 
   return (
@@ -21,8 +19,12 @@ export const Header = () => {
       }}
     >
       <div>{theme === "dark" ? "Dark theme" : "Light theme"}</div>
+
       <div>
-        <Switch onChange={handleChange} checked={checked} />
+        <Switch
+          onChange={handleChange}
+          checked={theme === "dark" ? true : false}
+        />
       </div>
     </div>
   );
