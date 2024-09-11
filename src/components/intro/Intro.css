@@ -1,0 +1,7 @@
+#intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f83e7;
+  height: calc(100vh - 200px);
+}
