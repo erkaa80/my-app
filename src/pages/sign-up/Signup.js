@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export const Signup = () => {
+  const { theme } = useThemeContext();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +34,12 @@ export const Signup = () => {
   };
 
   return (
-    <div id="container">
+    <div
+      id="container"
+      style={{
+        backgroundColor: theme === "dark" ? "#333" : "#f5f5f5",
+      }}
+    >
       <form id="form-container">
         <h1>Sign Up</h1>
         <input

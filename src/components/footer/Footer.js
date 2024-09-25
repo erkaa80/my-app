@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import { useThemeContext } from "../context/ThemeContext";
+import { useThemeContext } from "../../context";
+
 export const Footer = () => {
   const { theme } = useThemeContext();
 
@@ -8,8 +9,8 @@ export const Footer = () => {
     <div
       id="footer-container"
       style={{
-        backgroundColor: theme === "dark" ? "#333" : "#f5f5f5",
-        color: theme === "dark" ? "#f5f5f5" : "#333",
+        backgroundColor: theme === "dark" ? "#333" : "#f0f0f0",
+        color: theme === "dark" ? "#f0f0f0" : "#333",
       }}
     >
       Footer component

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import "./Counter.css";
-import { Button } from "../button";
+import { Button } from "../../components/button";
+import { useThemeContext } from "../../context";
 
 export const Counter = () => {
+  const { theme } = useThemeContext();
   const [counter, setCounter] = useState(0);
 
   const increment = () => {
-    setCounter(counter + 1);
+    setCounter((prev) => prev + 1);
   };
 
   const decrement = () => {
-    if (counter > 0) {
-      setCounter(counter - 1);
-    }
+    // If the counter is greater than 0, decrement the counter, otherwise keep it as it is
+    // Ternary operator is used to check the condition:
+    // condition ? trueCase : falseCase
+    setCounter((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   const reset = () => {
@@ -20,7 +23,13 @@ export const Counter = () => {
   };
 
   return (
-    <div id="counter-container">
+    <div
+      id="counter-container"
+      style={{
+        backgroundColor: theme === "light" ? "#f0f0f0" : "#333",
+        color: theme === "light" ? "#333" : "#f0f0f0",
+      }}
+    >
       <h1>Counter App</h1>
 
       <div id="counter">
